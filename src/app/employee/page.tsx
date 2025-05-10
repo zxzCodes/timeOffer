@@ -51,7 +51,11 @@ const page = async () => {
       <div className="flex flex-col space-y-2">
         <h1 className="text-3xl font-bold">Employee Dashboard.</h1>
         <p className="text-gray-500">Manage your time off requests.</p>
+        <Button variant="outline" asChild>
+          <Link href={"/employee"}>Back</Link>
+        </Button>
       </div>
+      
       <div className="grid gap-6 lg:grid-cols-2">
         <Card>
           <CardHeader>

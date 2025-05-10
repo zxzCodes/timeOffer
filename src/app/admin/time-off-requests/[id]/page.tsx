@@ -5,6 +5,7 @@ import { prisma } from "@/lib/prisma";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import ApproveRejectButtons from "@/components/approve-reject-button";
+import { buttonVariants } from "@/components/ui/button";
 
 
 const page = async ({
@@ -63,7 +64,10 @@ const page = async ({
     <div className="space-y-8 mt-12">
       <div className="flex items-center justify-between">
         <div className="flex flex-col space-y-2">
-          <Link href="/admin/time-off-requests">Back to Time Off Requests</Link>
+          <Link href="/admin/time-off-requests" className={buttonVariants({
+            variant: 'outline'
+            
+          })}>Back to Time Off Requests</Link>
           <h1 className="text-3xl font-bold">Time off request details</h1>
         </div>
         {request.status === "PENDING" && <ApproveRejectButtons id={id} />}

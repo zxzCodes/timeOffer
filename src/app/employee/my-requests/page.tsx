@@ -51,7 +51,12 @@ const page = async () => {
           <p className="text-gray-500">
             View and manage your time off requests
           </p>
+          <Button variant="outline" asChild>
+          <Link href={"/employee"}>Back</Link>
+        </Button>
         </div>
+       
+
         <Button asChild>
           <Link href={"/employee/new-request"}>New Request</Link>
         </Button>

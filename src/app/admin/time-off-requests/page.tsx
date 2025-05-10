@@ -13,7 +13,7 @@ import {
 import { formatDate } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 
 const page = async () => {
   const { userId, sessionClaims } = await auth();
@@ -44,7 +44,13 @@ const page = async () => {
       <div className="flex flex-col space-y-2">
         <h1 className="text-3xl font-bold">Time Off Requests</h1>
         <p className="text-gray-500">View and manage all time off requests</p>
+        
       </div>
+      <Link href={'/admin' } className={
+          buttonVariants({
+            variant: 'outline'
+          })
+        } > Go back to dashboard</Link>
       <Card>
         <CardContent className="p-6">
           <Table>
