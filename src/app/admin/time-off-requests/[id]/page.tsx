@@ -7,14 +7,13 @@ import Link from "next/link";
 import ApproveRejectButtons from "@/components/approve-reject-button";
 import { buttonVariants } from "@/components/ui/button";
 
+type TimeOffRequestProps = {
+  params:Promise<{id:string}>
+}
 
 const page = async ({
   params,
-}: {
-  params: {
-    id: string;
-  };
-}) => {
+}:TimeOffRequestProps) => {
   const { userId } = await auth();
 
   if (!userId) {

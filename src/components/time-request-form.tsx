@@ -49,7 +49,7 @@ const requestSchema = z
     reason: z.string().optional(),
     excludeWeekends: z.boolean().optional(),
     excludeHolidays: z.boolean().optional(),
-    customExcludedDates: z.array(z.date()).default([]),
+    customExcludedDates: z.array(z.date()).default([]).optional(),
   })
   .refine((data) => data.startDate <= data.endDate, {
     message: "Start date must be before end date",
@@ -199,7 +199,7 @@ const TimeOffRequestForm = ({
           endDate,
           excludeWeekends ?? false,
           excludeHolidays ?? false,
-          customExcludedDates,
+          customExcludedDates ?? [],
           companyHolidays,
         )
       : {
@@ -237,8 +237,8 @@ const TimeOffRequestForm = ({
     formData.append("excludeHolidays", data.excludeHolidays ? "true" : "false")
     formData.append("workingDays", workingDays.toString())
 
-    if (data.customExcludedDates.length > 0) {
-      formData.append("customExcludedDates", JSON.stringify(data.customExcludedDates.map((date) => date.toISOString())))
+    if ((data.customExcludedDates ?? []).length > 0) {
+      formData.append("customExcludedDates", JSON.stringify((data.customExcludedDates ?? []).map((date) => date.toISOString())))
     }
 
     try {
